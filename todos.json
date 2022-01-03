@@ -1,5 +1,22 @@
-module.exports = [
-  { id: '1', description: 'Remember the milk' },
-  { id: '2', description: 'Wash the car' },
-  { id: '3', description: 'Scrub the decks' },
-]
+{
+  "data": [
+    {
+      "id": "1",
+      "description": "Remember the milk",
+      "dueDate": 1641175471286,
+      "completed": false
+    },
+    {
+      "id": "2",
+      "description": "Wash the car",
+      "dueDate": 1641175471286,
+      "completed":  true
+    },
+    {
+      "id": "3",
+      "description": "Scrub the decks",
+      "dueDate": 1641175471286,
+      "completed":  true
+    }
+  ]
+}
