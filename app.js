@@ -1,21 +1,39 @@
-const app = require('fastify')({
-  logger: true
-})
-const PORT = 3000
-const HOST = '127.0.0.1' // '0.0.0.0'
+const app = require('fastify')({ logger: true })
+const fastifyEnv = require('fastify-env')
+
+const schema = {
+  type: 'object',
+  required: [ 'PORT', 'HOST' ],
+  properties: {
+    PORT: {
+      type: 'string',
+      default: 3000
+    },
+    HOST: {
+      type: 'string',
+      default: 'localhost'
+    }
+  }
+}
+const options = {
+  dotenv: true,
+  schema
+}
 
 app.register(require('fastify-swagger'), {
   exposeRoute: true,
-  routePrefix: 'docs',
+  routePrefix: '/docs',
   swagger: {
     info: {
-      title: 'fastify-api'
+      title: 'todo-api',
+      description: 'Todo API documentation, testing and examples',
     }
   }
 })
+
 app.register(require('./routes/todos'))
 
-const start = async () => {
+const start = async ({PORT, HOST}) => {
   try {
     await app.listen(PORT, HOST)
   } catch (error) {
@@ -24,4 +42,12 @@ const start = async () => {
   }
 }
 
-start()
+app.register(fastifyEnv, options)
+  .ready((err) => {
+    if (err) console.error(err)
+
+    start(app.config)
+    console.log(app.config) // or fastify[options.confKey]
+    // output: { PORT: 3000 }
+  })
+
