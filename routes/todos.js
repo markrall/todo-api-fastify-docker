@@ -1,4 +1,4 @@
-const todoRouteSchemas = require('../routes/todoSchema')
+const todoRouteSchemas = require('./todoSchema')
 
 function todoRoutes(fastify, options, done) {
   fastify.get('/todos', todoRouteSchemas.getTodos)

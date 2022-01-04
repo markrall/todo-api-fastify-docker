@@ -1,9 +1,10 @@
-const fastify = require('fastify')({
+const app = require('fastify')({
   logger: true
 })
 const PORT = 3000
+const HOST = '127.0.0.1' // '0.0.0.0'
 
-fastify.register(require('fastify-swagger'), {
+app.register(require('fastify-swagger'), {
   exposeRoute: true,
   routePrefix: 'docs',
   swagger: {
@@ -12,13 +13,13 @@ fastify.register(require('fastify-swagger'), {
     }
   }
 })
-fastify.register(require('./routes/todos'))
+app.register(require('./routes/todos'))
 
 const start = async () => {
   try {
-    await fastify.listen(PORT)
+    await app.listen(PORT, HOST)
   } catch (error) {
-    fastify.log.error(error)
+    app.log.error(error)
     process.exit(1)
   }
 }
