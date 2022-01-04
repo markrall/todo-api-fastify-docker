@@ -12,7 +12,8 @@ const todoRouteSchemas = {
               id: { type: 'string'},
               description: { type: 'string' },
               dueDate: { type: 'integer' },
-              completed: { type: 'boolean' }
+              completed: { type: 'boolean' },
+              created: { type: 'integer' },
             }
           }
         }
@@ -35,7 +36,8 @@ const todoRouteSchemas = {
             id: { type: 'string'},
             description: { type: 'string' },
             dueDate: { type: 'integer' },
-            completed: { type: 'boolean' }
+            completed: { type: 'boolean' },
+            created: { type: 'integer' }
           }
         }
       }
@@ -49,7 +51,8 @@ const todoRouteSchemas = {
         properties: {
           description: { type: 'string' },
           dueDate: { type: 'integer' },
-          completed: { type: 'boolean' }
+          completed: { type: 'boolean' },
+          created: { type: 'integer' }
         },
         required: [ 'description' ],
       },
@@ -60,7 +63,8 @@ const todoRouteSchemas = {
             id: { type: 'string'},
             description: { type: 'string' },
             dueDate: { type: 'integer' },
-            completed: { type: 'boolean' }
+            completed: { type: 'boolean' },
+            created: { type: 'integer' }
           }
         }
       }
@@ -82,7 +86,8 @@ const todoRouteSchemas = {
             id: { type: 'string'},
             description: { type: 'string' },
             dueDate: { type: 'integer' },
-            completed: { type: 'boolean' }
+            completed: { type: 'boolean' },
+            created: { type: 'integer' }
           }
         }
       }
@@ -102,7 +107,8 @@ const todoRouteSchemas = {
         properties: {
           description: { type: 'string' },
           dueDate: { type: 'integer' },
-          completed: { type: 'boolean' }
+          completed: { type: 'boolean' },
+          updated: { type: 'integer' }
         }
       },
       response: {
@@ -112,7 +118,8 @@ const todoRouteSchemas = {
             id: { type: 'string'},
             description: { type: 'string' },
             dueDate: { type: 'integer' },
-            completed: { type: 'boolean' }
+            completed: { type: 'boolean' },
+            created: { type: 'integer' }
           }
         }
       }

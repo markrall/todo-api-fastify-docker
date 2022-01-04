@@ -20,13 +20,13 @@ const todoControllers = {
     }
   },
   postTodo: function (req, res) {
-    const id = nanoid()
     const { description, dueDate, completed } = req.body
     const todo = {
-      id,
+      id: nanoid(),
       description,
       dueDate,
-      completed
+      completed,
+      created: new Date().getTime()
     }
     try {
       todos.data.push(todo)
@@ -64,7 +64,8 @@ const todoControllers = {
           ...originalTodo,
           description: description ?? originalTodo.description,
           dueDate: dueDate ?? originalTodo.dueDate,
-          completed: completed ?? originalTodo.completed
+          completed: completed ?? originalTodo.completed,
+          updated: new Date().getTime()
         }
         res.send(todos.data[index])
       } else {
