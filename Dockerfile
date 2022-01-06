@@ -1,13 +1,16 @@
-FROM node:16-alpine
+# syntax=docker/dockerfile:1
 
-RUN mkdir /app
+FROM node:16-alpine
+ENV NODE_ENV=production
+
 WORKDIR /app
 
-COPY package.json package.json
-RUN npm install && mv node_modules /node_modules
+COPY ["package.json", "package-lock.json*", "./"]
+
+RUN npm install --production
 
 COPY . .
 
 LABEL maintainer="Mark Rall"
 
-CMD node app.js
+CMD [ "node", "app.js" ]
